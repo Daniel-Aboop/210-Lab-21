@@ -8,29 +8,31 @@ class Goat{
     int age;
     string name;
     string color;
-
     string names[15]={"Billy", "Clover", "Nibbles", "Pepper", "Daisy","Butterscotch", "Gizmo","Maple", "Oreo", "Hazel","Rocky", "Poppy", "Pickles", "Luna", "Moose"};
-
-    string colors[15]={ "Crimson", "Azure", "Olive", "Coral", "Indigo","Lavender", "Teal", "Amber", "Mint", "Scarlet","Cyan", "Magenta", "Beige", "Charcoal", "Plum"};
+    string colors[15]={"Crimson", "Azure", "Olive", "Coral", "Indigo","Lavender", "Teal", "Amber", "Mint", "Scarlet","Cyan", "Magenta", "Beige", "Charcoal", "Plum"};
     public:
     Goat(){
-        int random1
-        int random2
-        int random3
-
-
+        int random1=rand()%20+1;
+        int random2=rand()%15;
+        int random3=rand()%15;
+        age=random1;
+        name=names[random2];
+        color=colors[random3];
     }
-    
-
+    Goat(int age,string name,string color){
+        this->age=age;
+        this->name=name;
+        this->color=color;
+    }
 };
 
 class DoublyLinkedList {
 private:
     struct Node {
-        int data;
+        Goat data;
         Node* prev;
         Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
+        Node(Goat val, Node* p = nullptr, Node* n = nullptr) {
             data = val; 
             prev = p;
             next = n;
@@ -44,8 +46,8 @@ public:
     // constructor
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-    void push_back(int value) {
-        Node* newNode = new Node(value);
+    void push_back(const Goat& value) {
+        Node* newNode = new Node;
         if (!tail)  // if there's no tail, the list is empty
             head = tail = newNode;
         else {
@@ -157,7 +159,7 @@ int main() {
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
 
     for (int i = 0; i < size; ++i)
-        list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
+        list.push_back();
     cout << "List forward: ";
     list.print();
 
