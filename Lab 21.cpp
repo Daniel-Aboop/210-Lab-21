@@ -1,8 +1,28 @@
 #include <iostream>
+#include <random>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+class Goat{
+    private:
+    int age;
+    string name;
+    string color;
 
+    string names[15]={"Billy", "Clover", "Nibbles", "Pepper", "Daisy","Butterscotch", "Gizmo","Maple", "Oreo", "Hazel","Rocky", "Poppy", "Pickles", "Luna", "Moose"};
+
+    string colors[15]={ "Crimson", "Azure", "Olive", "Coral", "Indigo","Lavender", "Teal", "Amber", "Mint", "Scarlet","Cyan", "Magenta", "Beige", "Charcoal", "Plum"};
+    public:
+    Goat(){
+        int random1
+        int random2
+        int random3
+
+
+    }
+    
+
+};
 
 class DoublyLinkedList {
 private:
@@ -132,6 +152,7 @@ public:
 
 // Driver program
 int main() {
+    srand(time(0));
     DoublyLinkedList list;
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
 
