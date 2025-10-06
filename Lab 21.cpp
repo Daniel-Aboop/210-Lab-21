@@ -1,5 +1,10 @@
+// COMSC-210 | Lab 21 | Daniel Santisteban
+// IDE used: VS Code
+
 #include <iostream>
 #include <random>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -24,6 +29,10 @@ class Goat{
         this->name=name;
         this->color=color;
     }
+    int getage(){return age;}
+    string getname(){return name;}
+    string getcolor(){return color;}
+
 };
 
 class DoublyLinkedList {
@@ -99,11 +108,11 @@ public:
         temp->next = newNode;
     }
 
-    void delete_node(Goat value) {
+    void delete_node(Goat* value) {
         if (!head) return; // Empty list
 
         Node* temp = head;
-        while (temp && temp->data != value)
+        while (temp && &temp->data != value)
             temp = temp->next;
 
         if (!temp) return; // Value not found
@@ -125,9 +134,13 @@ public:
 
     void print() {
         Node* current = head;
+         if(!head){
+        cout<<"Empty list.\n";
+        return;
+        }
         if (!current) return;
         while (current) {
-            cout << current->data << " ";
+            cout << current->data.getname() << " "<<"( "<<current->data.getcolor()<<", "<<current->data.getage()<<")"<<endl;
             current = current->next;
         }
         cout << endl;
@@ -137,7 +150,7 @@ public:
         Node* current = tail;
         if (!current) return;
         while (current) {
-            cout << current->data << " ";
+            cout << current->data.getname() << " "<<"( "<<current->data.getcolor()<<", "<<current->data.getage()<<")"<<endl;
             current = current->prev;
         }
         cout << endl;
@@ -162,10 +175,10 @@ int main() {
         Goat temp;
         list.push_back(temp);
     }
-    cout << "List forward: ";
+    cout << "List forward: "<<endl;;
     list.print();
 
-    cout << "List backward: ";
+    cout << "List backward: "<<endl;
     list.print_reverse();
 
     cout << "Deleting list, then trying to print.\n";
