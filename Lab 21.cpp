@@ -138,7 +138,6 @@ public:
         cout<<"Empty list.\n";
         return;
         }
-        if (!current) return;
         while (current) {
             cout << current->data.getname() << " "<<"( "<<current->data.getcolor()<<", "<<current->data.getage()<<")"<<endl;
             current = current->next;
@@ -148,7 +147,11 @@ public:
 
     void print_reverse() {
         Node* current = tail;
-        if (!current) return;
+       
+       if (!tail){
+        cout<<"Empty list.\n";
+        return;
+       } 
         while (current) {
             cout << current->data.getname() << " "<<"( "<<current->data.getcolor()<<", "<<current->data.getage()<<")"<<endl;
             current = current->prev;
@@ -161,6 +164,7 @@ public:
             Node* temp = head;
             head = head->next;
             delete temp;
+            head=tail=nullptr;
         }
     }
 };
@@ -185,6 +189,8 @@ int main() {
     list.~DoublyLinkedList();
     cout << "List forward: ";
     list.print();
+    cout<<"List backward:";
+    list.print_reverse();
 
     return 0;
 }
